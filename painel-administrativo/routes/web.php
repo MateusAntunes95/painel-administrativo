@@ -1,6 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\{
+    HomeController,
+    LoginController,
+    TipoAcessoController,
+    ProdutoController
+    
+};
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +20,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::resource('tipo_acesso', TipoAcessoController::class);
