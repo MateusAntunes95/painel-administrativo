@@ -5,7 +5,7 @@ use App\Http\Controllers\{
     HomeController,
     LoginController,
     TipoAcessoController,
-    ProdutoController
+    UserController
     
 };
 
@@ -21,3 +21,4 @@ use App\Http\Controllers\{
 */
 
 Route::resource('tipo_acesso', TipoAcessoController::class);
+Route::resource('user', UserController::class);
