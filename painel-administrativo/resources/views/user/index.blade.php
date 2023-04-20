@@ -5,12 +5,24 @@
         <div class="card-header">
             <div class="row">
                 <div class="col-sm-1">
-                    <legend> código </legend>
-                    <input name="id" type="text" class="form-control">
+                    <label> Código </label>
+                    <input name="id" type="text" class="form-control" value="{{ $request->id }}">
                 </div>
                 <div class="col-sm-4">
-                    <legend> Nome </legend>
-                    <input name="nome" type="text" class="form-control" placeholder="Procure por nome">
+                    <label> Nome </label>
+                    <input name="nome" type="text" class="form-control" placeholder="Procure por nome"
+                        value="{{$request->nome}}">
+                </div>
+                <div class="col-sm-4">
+                    <div class="col-sm-5">
+                        <label>Situação</label>
+                        <select class="form-select" name="situacao">
+                            <option value="" selected>Selecione uma situação</option>
+                            <option value="ativo" {{ $request->situacao == 'ativo' ? 'selected' : '' }}>Ativo</option>
+                            <option value="inativo" {{ $request->situacao == 'inativo' ? 'selected' : '' }}>Inativo</option>
+                            <option value="bloqueado" {{ $request->situacao == 'bloqueado' ? 'selected' : '' }}>Bloqueado</option>
+                        </select>
+                    </div>
                 </div>
             </div>
         </div>
@@ -43,7 +55,7 @@
                 <td>{{ $dado->nome }}</td>
                 <td>{{ $dado->email }}</td>
                 <td>{{ $dado->celular }}</td>
-                <td>{{ $dado->situacao }}</td>
+                <td>{{ config('enums.user.situacao.'.$dado->situacao) }}</td>
                 <td class="d-flex align-items-center">
                     <a href='{{ route('user.edit', $dado->id) }}'>
                         <button class="btn btn-success"><i class="bi bi-pencil"></i></button>
@@ -58,5 +70,8 @@
             @endforeach
         </tbody>
     </table>
+    @if ($dados instanceof Illuminate\Pagination\LengthAwarePaginator)
+    @include('pagination', ['dados' => $dados])
+@endif
 </div>
 @endsection

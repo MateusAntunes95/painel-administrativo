@@ -1,8 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
     document.querySelector('.celular').addEventListener('keypress', mascaraCelular);
-    document.querySelector('.somente-numero').addEventListener('keypress', somenteNumero);
     document.querySelector('.nascimento').addEventListener('keypress', nascimento);
+    const numeros = document.querySelectorAll('.somente-numero');
 
+    numeros.forEach(numero => {numero.addEventListener('keypress', somenteNumero)});
+    
     function mascaraCelular(event) {
         let inptlengt = event.target.value.length;
 

@@ -13,24 +13,28 @@
 </head>
 
 <body>
-    <div class="bonot-vai-arrumar">
-        <div id="error-tag">
-            @if (count($errors) > 0)
-            <div class="tem-que-ficar-vermelho-bo">
-                Foram encontrados alguns problemas no formulário:<br><br>
-                <ul>
-                    @foreach ($errors->all() as $error)
-                    <li>{!! $error !!}</li>
-                    @endforeach
-                </ul>
-            </div>
-            @endif
-        </div>
+    @if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
     </div>
-    <div class="vai-ser-o-titulo-da-pagina">
+    @endif
+    @if (count($errors) > 0)
+    <div class="alert alert-danger">
+        Foram encontrados alguns problemas no formulário:<br><br>
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{!! $error !!}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+    </div>
+    </div>
+    <div class="display-4 fw-bold text-center text-primary">
         <h1>{{ $title }}</h1>
     </div>
     @yield('content')
+   
 </body>
 
 </html>

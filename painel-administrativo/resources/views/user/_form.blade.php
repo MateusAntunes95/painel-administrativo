@@ -35,9 +35,9 @@
             <div class="col-sm-4">
                 <label>Situação</label>
                 <select class="form-select" name="situacao">
-                    <option value="pendente" {{ $user->situacao == 'pendente' ? 'selected' : '' }}>Pendente</option>
-                    <option value="aprovado" {{ $user->situacao == 'aprovado' ? 'selected' : '' }}>Aprovado</option>
-                    <option value="reprovado" {{ $user->situacao == 'reprovado' ? 'selected' : '' }}>Reprovado</option>
+                    <option value="ativo" {{ $user->situacao == 'ativo' ? 'selected' : '' }}>Ativo</option>
+                    <option value="inativo" {{ $user->situacao == 'inativo' ? 'selected' : '' }}>Inativo</option>
+                    <option value="bloqueado" {{ $user->situacao == 'bloqueado' ? 'selected' : '' }}>Bloqueado</option>
                 </select>
             </div>
         </div>
