@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
     HomeController,
-    LoginController,
+    ClienteController,
     TipoAcessoController,
     UserController
     
@@ -22,3 +22,4 @@ use App\Http\Controllers\{
 
 Route::resource('tipo_acesso', TipoAcessoController::class);
 Route::resource('user', UserController::class);
+Route::resource('cliente', ClienteController::class);

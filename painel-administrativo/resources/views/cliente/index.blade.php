@@ -1,6 +1,6 @@
-@extends('layout', ['title' => 'Cadastro de úsuario'])
+@extends('layout', ['title' => 'Cadastro de clientes'])
 @section('content')
-<form method="get" action="{{ route('user.index') }}">
+<form method="get" action="{{ route('cliente.index') }}">
     <div class="card">
         <div class="card-header">
             <div class="row">
@@ -10,17 +10,19 @@
                 </div>
                 <div class="col-sm-4">
                     <label> Nome </label>
-                    <input name="nome" type="text" class="form-control" placeholder="Procure por nome"
+                    <input name="nome_usuario" type="text" class="form-control" placeholder="Procure por nome"
                         value="{{$request->nome}}">
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-5">
                     <div class="col-sm-5">
                         <label>Situação</label>
                         <select class="form-select" name="situacao">
                             <option value="" selected>Selecione uma situação</option>
                             <option value="ativo" {{ $request->situacao == 'ativo' ? 'selected' : '' }}>Ativo</option>
-                            <option value="inativo" {{ $request->situacao == 'inativo' ? 'selected' : '' }}>Inativo</option>
-                            <option value="bloqueado" {{ $request->situacao == 'bloqueado' ? 'selected' : '' }}>Bloqueado</option>
+                            <option value="inativo" {{ $request->situacao == 'inativo' ? 'selected' : '' }}>Inativo
+                            </option>
+                            <option value="bloqueado" {{ $request->situacao == 'bloqueado' ? 'selected' : ''
+                                }}>Bloqueado</option>
                         </select>
                     </div>
                 </div>
@@ -49,29 +51,29 @@
             </tr>
         </thead>
         <tbody>
-            {{-- @foreach ($dados as $dado )
+            @foreach ($dados as $dado )
             <tr>
                 <td>{{ $dado->id }}</td>
-                <td>{{ $dado->nome }}</td>
+                <td>{{ $dado->nome_usuario }}</td>
                 <td>{{ $dado->email }}</td>
                 <td>{{ $dado->celular }}</td>
                 <td>{{ config('enums.user.situacao.'.$dado->situacao) }}</td>
                 <td class="d-flex align-items-center">
-                    <a href='{{ route('user.edit', $dado->id) }}'>
+                    <a href='{{ route('cliente.edit', $dado->id) }}'>
                         <button class="btn btn-success"><i class="bi bi-pencil"></i></button>
                     </a>
-                    <form method="post" action="{{ route('user.destroy', $dado->id) }}">
+                    <form method="post" action="{{ route('cliente.destroy', $dado->id) }}">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger ms-2"><i class="bi bi-trash"></i></button>
                     </form>
                 </td>
             </tr>
-            @endforeach --}}
+            @endforeach
         </tbody>
     </table>
-    {{-- @if ($dados instanceof Illuminate\Pagination\LengthAwarePaginator)
+    @if ($dados instanceof Illuminate\Pagination\LengthAwarePaginator)
     @include('pagination', ['dados' => $dados])
-@endif --}}
+    @endif
 </div>
 @endsection
