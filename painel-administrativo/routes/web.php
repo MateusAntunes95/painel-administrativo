@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
-    HomeController,
+    AlbumController,
     ClienteController,
     TipoAcessoController,
     UserController
@@ -23,3 +23,6 @@ use App\Http\Controllers\{
 Route::resource('tipo_acesso', TipoAcessoController::class);
 Route::resource('user', UserController::class);
 Route::resource('cliente', ClienteController::class);
+Route::resource('album', AlbumController::class);
+
+Route::get('album/preenche_perfil/{id}', [AlbumController::class, 'preenchePerfil']);

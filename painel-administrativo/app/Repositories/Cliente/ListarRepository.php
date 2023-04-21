@@ -14,7 +14,6 @@ class ListarRepository
         $this->dados = $dados;
         $this->query = Cliente::query();
         $this->select();
-        // $this->join();
         $this->filter();
 
         return $this->query;
@@ -29,12 +28,6 @@ class ListarRepository
             'clientes.celular',
             'clientes.situacao',
         ]);
-    }
-
-    private function join(): void
-    {
-        $this->query->leftjoin('perfils', 'clientes.id', 'perfils.cliente_id');
-        $this->query->leftjoin('enderecos', 'clientes.id', 'enderecos.cliente_id');
     }
 
     private function filter()

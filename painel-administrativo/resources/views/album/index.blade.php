@@ -1,6 +1,6 @@
 @extends('layout', ['title' => 'Cadastro de úsuario'])
 @section('content')
-<form method="get" action="{{ route('user.index') }}">
+<form method="get" action="{{ route('album.index') }}">
     <div class="card">
         <div class="card-header">
             <div class="row">
@@ -18,9 +18,13 @@
                         <label>Situação</label>
                         <select class="form-select" name="situacao">
                             <option value="" selected>Selecione uma situação</option>
-                            <option value="ativo" {{ $request->situacao == 'ativo' ? 'selected' : '' }}>Ativo</option>
-                            <option value="inativo" {{ $request->situacao == 'inativo' ? 'selected' : '' }}>Inativo</option>
-                            <option value="bloqueado" {{ $request->situacao == 'bloqueado' ? 'selected' : '' }}>Bloqueado</option>
+                            <option value="disponivel_publico" {{ $request->situacao == 'ativo' ? 'selected' : '' }}>Disponível Público</option>
+                            <option value="disponivel_restrito" {{ $request->situacao == 'inativo' ? 'selected' : '' }}>Disponível Restrito
+                            </option>
+                            <option value="bloqueado" {{ $request->situacao == 'bloqueado' ? 'selected' : ''
+                                }}>Bloqueado</option>
+                            <option value="excluido" {{ $request->situacao == 'bloqueado' ? 'selected' : ''
+                                }}>Excluído</option>
                         </select>
                     </div>
                 </div>
@@ -30,8 +34,8 @@
             <button type="submit" class="btn btn-primary">
                 <i class="bi bi-search"></i> Pesquisar
             </button>
-            <a href="{{ route('cliente.create') }}"> <button type="button" class="btn btn-success">
-                    Criar Cliente
+            <a href="{{ route('album.create') }}"> <button type="button" class="btn btn-success">
+                    Criar Album
                 </button> </a>
         </div>
     </div>
@@ -41,9 +45,8 @@
         <thead>
             <tr>
                 <th>Código</th>
-                <th>Nome</th>
-                <th>Email</th>
-                <th>Celular</th>
+                <th>Nome úsuario</th>
+                <th>Titulo</th>
                 <th>Situação</th>
                 <th>Ações</th>
             </tr>
@@ -52,19 +55,13 @@
             @foreach ($dados as $dado )
             <tr>
                 <td>{{ $dado->id }}</td>
-                <td>{{ $dado->nome }}</td>
-                <td>{{ $dado->email }}</td>
-                <td>{{ $dado->celular }}</td>
-                <td>{{ config('enums.user.situacao.'.$dado->situacao) }}</td>
+                <td>{{ $dado->nome_usuario }}</td>
+                <td>{{ $dado->titulo }}</td>
+                <td>{{ config('enums.album.situacao.'.$dado->situacao) }}</td>
                 <td class="d-flex align-items-center">
-                    <a href='{{ route('user.edit', $dado->id) }}'>
+                    <a href='{{ route('album.edit', $dado->id) }}'>
                         <button class="btn btn-success"><i class="bi bi-pencil"></i></button>
                     </a>
-                    <form method="post" action="{{ route('user.destroy', $dado->id) }}">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger ms-2"><i class="bi bi-trash"></i></button>
-                    </form>
                 </td>
             </tr>
             @endforeach
@@ -72,6 +69,6 @@
     </table>
     @if ($dados instanceof Illuminate\Pagination\LengthAwarePaginator)
     @include('pagination', ['dados' => $dados])
-@endif
+    @endif
 </div>
 @endsection

@@ -26,4 +26,9 @@ class Cliente extends Model
     {
         return $this->hasMany(Endereco::class, 'cliente_id');
     }
+
+    public function perfis()
+    {
+        return $this->hasMany(Perfil::class);
+    }
 }
