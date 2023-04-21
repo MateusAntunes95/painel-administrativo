@@ -30,8 +30,8 @@
             <button type="submit" class="btn btn-primary">
                 <i class="bi bi-search"></i> Pesquisar
             </button>
-            <a href="{{ route('cliente.create') }}"> <button type="button" class="btn btn-success">
-                    Criar Cliente
+            <a href="{{ route('user.create') }}"> <button type="button" class="btn btn-success">
+                    Criar Úsuario
                 </button> </a>
         </div>
     </div>

@@ -1,12 +1,25 @@
 document.addEventListener("DOMContentLoaded", function () {
     document.querySelector('.celular').addEventListener('keypress', mascaraCelular);
-    document.querySelector('.cpf').addEventListener('keypress', mascaraCPF);
-    document.querySelector('.rg').addEventListener('keypress', mascaraRG);
-    document.querySelector('.nascimento').addEventListener('keypress', nascimento);
+    const cpfs = document.querySelectorAll('.cpf');
+    const rgs = document.querySelectorAll('.rg');
+    const nascimentos = document.querySelectorAll('.nascimento');
     const numeros = document.querySelectorAll('.somente-numero');
 
     numeros.forEach(numero => {
         numero.addEventListener('keypress', somenteNumero)
+    });
+
+    cpfs.forEach(cpf => {
+        cpf.addEventListener('keypress', mascaraCPF)
+    });
+
+    rgs.forEach(rg => {
+        rg.addEventListener('keypress', mascaraRG)
+    });
+
+    nascimentos.forEach(n => {
+        console.log(n);
+        n.addEventListener('keypress', nascimento)
     });
 
     function mascaraCPF(event) {

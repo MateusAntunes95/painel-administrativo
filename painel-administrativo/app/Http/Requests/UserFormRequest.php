@@ -26,7 +26,7 @@ class UserFormRequest extends FormRequest
     {
         return [
             'nome' => 'required|min:2',
-            'email' => 'required|email|unique:users,email,'.$this->user->id,
+            'email' => 'required|email|unique:users,email,'.($this->user ? $this->user->id : ''),
             'password' => 'required|min:2',
             'nascimento' => 'required|min:10|max:10',
             'celular' => 'required|min:14|max:14',
