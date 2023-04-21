@@ -5,8 +5,8 @@ use App\Http\Controllers\{
     AlbumController,
     ClienteController,
     TipoAcessoController,
-    UserController
-    
+    UserController,
+    RelatoriosController,
 };
 
 /*
@@ -26,3 +26,4 @@ Route::resource('cliente', ClienteController::class);
 Route::resource('album', AlbumController::class);
 
 Route::get('album/preenche_perfil/{id}', [AlbumController::class, 'preenchePerfil']);
+Route::get('albuns_versos_clientes', [RelatoriosController::class, 'index']);
