@@ -21,7 +21,7 @@ use App\Http\Controllers\{
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('/', function () { return redirect()->route('home'); });
 Route::resource('tipo_acesso', TipoAcessoController::class);
 Route::resource('user', UserController::class);
 Route::resource('cliente', ClienteController::class);
@@ -29,5 +29,5 @@ Route::resource('album', AlbumController::class);
 
 Route::get('album/preenche_perfil/{id}', [AlbumController::class, 'preenchePerfil']);
 Route::get('albuns_versos_clientes', [RelatoriosController::class, 'index']);
-Route::get('home', [HomeController::class, 'index']);
+Route::get('home', [HomeController::class, 'index'])->name('home');
 Route::get('/login', [LoginController::class, 'login'])->name('login');
