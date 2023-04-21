@@ -16,7 +16,7 @@ class ClienteController extends Controller
     {
         $dados = $listarRepository->listar($request->all())->paginate(10);
     
-        return view('cliente.index', compact('dados', 'request'));;
+        return view('cliente.index', compact('dados', 'request'));
     }
 
     public function create()

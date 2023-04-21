@@ -13,6 +13,26 @@
 </head>
 
 <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{{ route('user.index') }}">Cadastro de úsuario</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('cliente.index') }}">Cadastro de cliente</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('album.index') }}">Cadastro de album</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('albuns_versos_clientes') }}">Relatorio</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
     @if (session('success'))
     <div class="alert alert-success">
         {{ session('success') }}
@@ -34,7 +54,7 @@
         <h1>{{ $title }}</h1>
     </div>
     @yield('content')
-   
+
 </body>
 
 </html>

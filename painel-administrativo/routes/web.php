@@ -7,6 +7,8 @@ use App\Http\Controllers\{
     TipoAcessoController,
     UserController,
     RelatoriosController,
+    HomeController,
+    LoginController,
 };
 
 /*
@@ -27,3 +29,5 @@ Route::resource('album', AlbumController::class);
 
 Route::get('album/preenche_perfil/{id}', [AlbumController::class, 'preenchePerfil']);
 Route::get('albuns_versos_clientes', [RelatoriosController::class, 'index']);
+Route::get('home', [HomeController::class, 'index']);
+Route::get('/login', [LoginController::class, 'login'])->name('login');
