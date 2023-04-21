@@ -15,15 +15,10 @@ class CreateTipoAcessosTable extends Migration
     {
         Schema::create('tipo_acessos', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('titulo');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('tipo_acessos');

@@ -1,6 +1,6 @@
 @extends('layout', ['title' => 'Relatório'])
 @section('content')
-<form method="get" action="{{ route('album.index') }}">
+<form method="get" action="{{ url('albuns_versos_clientes') }}">
     <div class="card">
         <div class="card-header">
             <div class="row">
@@ -10,9 +10,9 @@
                         value="{{$request->nome}}">
                 </div>
                 <div class="col-sm-4">
-                    <label> Nome </label>
-                    <input name="nome_usuario" type="text" class="form-control" placeholder="Procure por nome"
-                        value="{{$request->nome}}">
+                    <label> titulo </label>
+                    <input name="titulo" type="text" class="form-control" placeholder="Procure por nome"
+                        value="{{$request->titulo}}">
                 </div>
             </div>
         </div>

@@ -10,4 +10,14 @@ class TipoAcesso extends Model implements Auditable
 {
     use HasFactory;
     use \OwenIt\Auditing\Auditable;
+    public $timestamps = false;
+
+    protected $fillable = [
+        'titulo',
+    ];
+
+    public function modulos()
+    {
+        return $this->hasMany(ModuloAcesso::class);
+    }
 }
